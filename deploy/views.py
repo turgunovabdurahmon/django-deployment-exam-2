@@ -3,6 +3,7 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from .models import Student
 from rest_framework.permissions import AllowAny
 from rest_framework.pagination import PageNumberPagination
+from .serializer import StudentSerializer
 # Create your views here.
 
 
@@ -13,12 +14,12 @@ class CustomPaginator(PageNumberPagination):
 
 class StudentListCreateApiVIew(ListCreateAPIView):
     queryset = Student.objects.all()
-    serializer_class = None
+    serializer_class = StudentSerializer
     permission_classes = [AllowAny]
     pagination_class = CustomPaginator
 
 
 class StudentDetailApiView(RetrieveUpdateDestroyAPIView):
     queryset = Student.objects.all()
-    serializer_class = None
+    serializer_class = StudentSerializer
     permission_classes = [AllowAny]
